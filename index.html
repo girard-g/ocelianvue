@@ -47,11 +47,71 @@
                     <li><a href="#">Apprentissage à la nage</a></li>
                     <li><a href="#">Activités aquatiques</a></li>
                     <li><a href="#">Contact</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Se connecter</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#register-modal"> S'enregistrer</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-
+        <div id="login-modal" class="modal fade">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content container col-md-12">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Se connecter</h5>
+                    </div>
+                    <div id="form-login-error" class="alert alert-danger" role="alert"></div>
+                    <form action="#" method="POST" class="form-horizontal" id="form-login">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="login-email" class="control-label">Email</label>
+                                <input type="email" id="login-email" name="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="login-password" class="control-label">Mot de passe</label>
+                                <input type="password" id="login-password" name="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-primary" name="login" value="Se connecter">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="register-modal" class="modal fade">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content container col-md-12">
+                    <div class="modal-header">
+                        <h5 class="modal-title">S'enregistrer</h5>
+                    </div>
+                    <div id="form-register-error" class="alert alert-danger" role="alert"></div>
+                    <form action="#" method="POST" class="form-horizontal" id="form-register">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="register-email" class="control-label">Email</label>
+                                <div class="alert alert-danger" id="form-register-error-email"></div>
+                                <input type="email" id="register-email" name="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="register-password" class="control-label">Mot de passe</label>
+                                <div class="alert alert-danger" id="form-register-error-password"></div>
+                                <input type="password" id="register-password" name="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="register-password-repeat" class="control-label">Retaper le mot de passe</label>
+                                <div class="alert alert-danger" id="form-register-error-repeated"></div>
+                                <input type="password" id="register-password-repeat" name="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-primary" name="register" value="S'enregister">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <!--<div class="cover-section" id="top-button">
             <div class="container">
                 <div class="row">
@@ -436,5 +496,7 @@
         <script src="js/wow.min.js"></script>
         <script src="js/ekko-lightbox.js"></script>
         <script src="js/custom.js"></script>
+        <script src="js/login.js"></script>
+        <script src="js/register.js"></script>
     </body>
 </html>
