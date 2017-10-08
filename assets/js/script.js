@@ -243,9 +243,6 @@ jQuery(document).ready(function($) {
 
         eventClick: function(calEvent, jsEvent, view) {
 
-            console.log(calEvent.start.format());
-            console.log(calEvent.title);
-
             $('.apiresponse').hide();
 
             $('.modal-title').html(calEvent.title+' - '+calEvent.start.format('Do MMMM YYYY, h:mm:ss a'));
@@ -253,15 +250,13 @@ jQuery(document).ready(function($) {
             $('.loader').show();
 
             const data = JSON.stringify({date:calEvent.start.format()});
-            const email = 'aze@aze.com';
-            const password = 'totototo';
+            const token = getCookie('api_token');
 
-            const authorizationHeader = 'Basic '+btoa(email+':'+password);
             $.ajax({
                 method: 'POST',
                 url: 'http:/127.0.0.1:8000/available_resources',
                 headers: {
-                    "Authorization": authorizationHeader,
+                    "Ocelian-Token": token,
                     'Content-Type': 'application/json',
                     'Accept': 'application/ld+json'
                 },
@@ -269,7 +264,6 @@ jQuery(document).ready(function($) {
                 dataType: 'json',
                 success: function (data) {
                     const unJson = JSON.parse(data);
-                    console.log(unJson);
                     $('.loader').hide();
 
                     $('#countbike').html(unJson.countBike);
