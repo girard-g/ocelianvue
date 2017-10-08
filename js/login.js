@@ -4,7 +4,7 @@ var form = $('#form-login');
 var formError = $('#form-login-error');
 
 var emailLink = $('#email-link');
-var logoutLink = $('#logout-link-link');
+var logoutLink = $('#logout-link');
 
 formError.hide();
 emailLink.hide();
@@ -24,7 +24,8 @@ form.on('submit', function (e) {
             "Authorization": authorizationHeader
         },
         success: function (data) {
-            document.cookie = 'username='+data.api_token+'; path=/';
+            document.cookie = 'username='+data.api_token+'; path=/;';
+            document.cookie = 'email='+data.email+'; path=/';
             $('#login-link').hide();
             $('#register-link').hide();
             emailLink.html(data.email);
