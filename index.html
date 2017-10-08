@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="css/ekko-lightbox.css">
         <link rel="stylesheet" href="css/style.css">
 
+
         <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
@@ -33,7 +34,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">
-                    <img src="image/logo-ocelian.png" width="243" height="54" alt="" class="img-responsive" style="width:125px">
+                    <img src="image/logo-ocelian.png" width="243" height="54" alt="" class="img-responsive">
                 </a>
             </div>
 
@@ -46,8 +47,10 @@
                     <li><a href="#">Tarifs & Horraires</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="reserve.html">Reserver</a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Se connecter</a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#register-modal"> S'enregistrer</a></li>
+                    <li><a href="#" id="login-link" data-toggle="modal" data-target="#login-modal">Connexion</a></li>
+                    <li><a href="#" id="register-link" data-toggle="modal" data-target="#register-modal">Inscription</a></li>
+                    <li><a href="#" id="email-link"></a></li>
+                    <li><a href="#" id="logout-link">Deconnexion</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -175,34 +178,36 @@
         </div>
 
         <div class="purilfy-section">
-                    <h1 class="col-md-12" style="color:white">GALERIE</h1>
-                    <div class="row">
-                        <div class="col-md-2"></div>
-                            <div class="col-md-8">
-                                <div class="row">
-                                    <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                                        <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
-                                    </a>
-                                    <a href="https://unsplash.it/1200/768.jpg?image=252" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                                        <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
-                                    </a>
-                                    <a href="https://unsplash.it/1200/768.jpg?image=253" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                                        <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
-                                    </a>
-                                </div>
-                                <div class="row">
-                                    <a href="https://unsplash.it/1200/768.jpg?image=254" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                                        <img src="https://unsplash.it/600.jpg?image=254" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
-                                    </a>
-                                    <a href="https://unsplash.it/1200/768.jpg?image=255" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                                        <img src="https://unsplash.it/600.jpg?image=255" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
-                                    </a>
-                                    <a href="https://unsplash.it/1200/768.jpg?image=256" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                                        <img src="https://unsplash.it/600.jpg?image=256" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
-                                    </a>
-                                </div>
-                            </div>
+            <div class="wow fadeInDown animated">
+                <h1 style="color:white">GALERIE</h1>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
+                            </a>
+                            <a href="https://unsplash.it/1200/768.jpg?image=252" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
+                            </a>
+                            <a href="https://unsplash.it/1200/768.jpg?image=253" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
+                            </a>
                         </div>
+                        <div class="row">
+                            <a href="https://unsplash.it/1200/768.jpg?image=254" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                <img src="https://unsplash.it/600.jpg?image=254" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
+                            </a>
+                            <a href="https://unsplash.it/1200/768.jpg?image=255" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                <img src="https://unsplash.it/600.jpg?image=255" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
+                            </a>
+                            <a href="https://unsplash.it/1200/768.jpg?image=256" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                <img src="https://unsplash.it/600.jpg?image=256" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="offer-section">
