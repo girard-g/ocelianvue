@@ -246,11 +246,19 @@ jQuery(document).ready(function($) {
             $('.apiresponse').hide();
 
             $('.modal-title').html(calEvent.title+' - '+calEvent.start.format('Do MMMM YYYY, h:mm:ss a'));
+
+            const token = getCookie('api_token');
+            if ('' === token) {
+                $('.modal-title').html('Vous devez vous connecter avant de prendre rendez-vous.');
+                $('#login-modal').modal('toggle');
+
+                return;
+            }
             $('#calendarmodal').modal('toggle');
+
             $('.loader').show();
 
             const data = JSON.stringify({date:calEvent.start.format()});
-            const token = getCookie('api_token');
 
             $.ajax({
                 method: 'POST',
