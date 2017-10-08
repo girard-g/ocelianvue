@@ -243,25 +243,28 @@ jQuery(document).ready(function($) {
 
         eventClick: function(calEvent, jsEvent, view) {
 
-            console.log(calEvent.start.format());
-            console.log(calEvent.title);
-
             $('.apiresponse').hide();
 
             $('.modal-title').html(calEvent.title+' - '+calEvent.start.format('Do MMMM YYYY, h:mm:ss a'));
+
+            const token = getCookie('api_token');
+            if ('' === token) {
+                $('.modal-title').html('Vous devez vous connecter avant de prendre rendez-vous.');
+                $('#login-modal').modal('toggle');
+
+                return;
+            }
             $('#calendarmodal').modal('toggle');
+
             $('.loader').show();
 
             const data = JSON.stringify({date:calEvent.start.format()});
-            const email = 'aze@aze.com';
-            const password = 'totototo';
 
-            const authorizationHeader = 'Basic '+btoa(email+':'+password);
             $.ajax({
                 method: 'POST',
                 url: 'http:/127.0.0.1:8000/available_resources',
                 headers: {
-                    "Authorization": authorizationHeader,
+                    "Ocelian-Token": token,
                     'Content-Type': 'application/json',
                     'Accept': 'application/ld+json'
                 },
@@ -269,14 +272,56 @@ jQuery(document).ready(function($) {
                 dataType: 'json',
                 success: function (data) {
                     const unJson = JSON.parse(data);
-                    console.log(unJson);
                     $('.loader').hide();
 
                     $('#countbike').html(unJson.countBike);
                     $('#countelliptic').html(unJson.countEllipticBike);
                     $('#countcarpet').html(unJson.countCarpet);
 
+                    const select = document.getElementById('velofield');
+                    var j =1;
+
+                    for (var i=0;i<unJson.resources.bike.length;i++){
+                        var opt = document.createElement('option');
+                        opt.value = j;
+                        opt.innerHTML = j;
+                        select.appendChild(opt);
+                        j ++;
+                    }
                     $('.apiresponse').show();
+
+                    $('#validate').on('click', function(e){
+
+                        var nbBike = $('#velofield').find(":selected").text();
+                        var ArrayToSend = [];
+                        var iris = [];
+
+                        for (var i=0;i<nbBike;i++) {
+
+                            ArrayToSend.push(unJson.resources.bike[i]);
+                            var string ='/resources/'+unJson.resources.bike[i].id;
+                            iris.push(string);
+                        }
+                        const data = {
+                            date: calEvent.start.format(),
+                            resources: iris
+                        };
+                            $.ajax({
+                                method: 'POST',
+                                url: 'http:/127.0.0.1:8000/appointments',
+                                headers: {
+                                    "Authorization": authorizationHeader,
+                                    'Content-Type': 'application/json',
+                                    'Accept': 'application/ld+json'
+                                },
+                                data: JSON.stringify(data),
+                                dataType: 'json',
+                                success: function (data) {
+                                    console.log(data);
+                                }
+                            });
+
+                    });
 
                 },
                 error: function () {
@@ -285,10 +330,6 @@ jQuery(document).ready(function($) {
 
                 }
             });
-
-
-
-
         }
     })
 });

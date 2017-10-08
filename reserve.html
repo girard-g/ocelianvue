@@ -46,14 +46,42 @@
                     <li><a href="#">Présentation</a></li>
                     <li><a href="#">Galerie</a></li>
                     <li><a href="#">Tarifs & Horraires</a></li>
-                    <li><a href="#">Apprentissage à la nage</a></li>
-                    <li><a href="#">Activités aquatiques</a></li>
                     <li><a href="#">Contact</a></li>
+                    <li><a href="reserve.html">Reserver</a></li>
+                    <li><a href="#" id="login-link" data-toggle="modal" data-target="#login-modal">Connexion</a></li>
+                    <li><a href="#" id="register-link" data-toggle="modal" data-target="#register-modal">Inscription</a></li>
+                    <li><a href="#" id="email-link"></a></li>
+                    <li><a href="#" id="logout-link">Deconnexion</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-
+        <div id="login-modal" class="modal fade">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content container col-md-12">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Se connecter</h5>
+                    </div>
+                    <div id="form-login-error" class="alert alert-danger" role="alert"></div>
+                    <form action="#" method="POST" class="form-horizontal" id="form-login">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="login-email" class="control-label">Email</label>
+                                <input type="email" id="login-email" name="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="login-password" class="control-label">Mot de passe</label>
+                                <input type="password" id="login-password" name="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-primary" name="login" value="Se connecter">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <div id="calendarmodal" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -69,6 +97,41 @@
                             <p>Vélo elliptique restants : <span id="countelliptic"></span></p>
                             <p>Tapis restants : <span id="countcarpet"></span></p>
 
+                            <h3>Reserver pour cette plage horaire :</h3>
+
+                            <div class="row">
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="velofield">Nombre de Vélo</label>
+                                        <select class="form-control" id="velofield">
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label for="veloefiled">Nombre de Vélo elliptique</label>
+                                    <div class="input-group">
+                                  <span class="input-group-addon">
+
+                                    <input id="veloefiled" type="checkbox" aria-label="veloefiled">
+                                  </span>
+                                        <input type="text" class="form-control" aria-label="veloefiled" placeholder="Vélo elliptique">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label for="veloTapis">Nombre de Tapis</label>
+                                    <div class="input-group">
+                                  <span class="input-group-addon">
+                                    <input id="veloTapis" type="checkbox" aria-label="veloTapis">
+                                  </span>
+                                        <input type="text" class="form-control" aria-label="veloTapis" placeholder="Tapis">
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
 
                         <div id="apialert" class="alert alert-danger fade in" hidden role="alert">
@@ -80,7 +143,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary" id="validate">Save changes</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -131,6 +194,11 @@
         <script src='node_modules/fullcalendar/node_modules/moment/moment.js'></script>
         <script src='node_modules/fullcalendar/dist/fullcalendar.js'></script>
         <script src='node_modules/fullcalendar/dist/locale/fr.js'></script>
+        <script src='js/cookie.js'></script>
         <script src='assets/js/script.js'></script>
+        <script src='js/login.js'></script>
+        <script src='js/logout.js'></script>
+        <script src='js/register.js'></script>
+        <script src='js/main.js'></script>
     </body>
 </html>

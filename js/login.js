@@ -15,7 +15,7 @@ form.on('submit', function (e) {
 
     var email = $('input#login-email').val();
     var password = $('input#login-password').val();
-    var authorizationHeader = 'Basic '+btoa(email+':'+password);
+    var authorizationHeader = 'Basic ' + btoa(email + ':' + password);
 
     $.ajax({
         method: 'POST',
@@ -23,9 +23,11 @@ form.on('submit', function (e) {
         headers: {
             "Authorization": authorizationHeader
         },
+        data: {email: email},
         success: function (data) {
-            document.cookie = 'username='+data.api_token+'; path=/;';
-            document.cookie = 'email='+data.email+'; path=/';
+            setCookie('email', data.email, 1);
+            setCookie('api_token', data.api_token, 1);
+            setCookie('id', data.id, 1);
             $('#login-link').hide();
             $('#register-link').hide();
             emailLink.html(data.email);
