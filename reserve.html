@@ -61,8 +61,22 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title"></h4>
                     </div>
-                    <div class="modal-body">
-                        <p>One fine body&hellip;</p>
+                    <div class="modal-body" style="min-height:60px;margin:15px;padding:0">
+                        <div class="loader col-md-offset-5 col-md-2"></div>
+                        <div class="apiresponse">
+
+                            <p>Vélo restants : <span id="countbike"></span></p>
+                            <p>Vélo elliptique restants : <span id="countelliptic"></span></p>
+                            <p>Tapis restants : <span id="countcarpet"></span></p>
+
+                        </div>
+
+                        <div id="apialert" class="alert alert-danger fade in" hidden role="alert">
+                            <!--<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>-->
+                            <span class="sr-only">Error:</span>
+                            Please Reload the page
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

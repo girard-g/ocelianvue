@@ -246,29 +246,47 @@ jQuery(document).ready(function($) {
             console.log(calEvent.start.format());
             console.log(calEvent.title);
 
-            var data = JSON.stringify({date:calEvent.start.format()});
+            $('.apiresponse').hide();
+
+            $('.modal-title').html(calEvent.title+' - '+calEvent.start.format('Do MMMM YYYY, h:mm:ss a'));
+            $('#calendarmodal').modal('toggle');
+            $('.loader').show();
+
+            const data = JSON.stringify({date:calEvent.start.format()});
+            const email = 'aze@aze.com';
+            const password = 'totototo';
+
+            const authorizationHeader = 'Basic '+btoa(email+':'+password);
             $.ajax({
-                method: 'GET',
+                method: 'POST',
                 url: 'http:/127.0.0.1:8000/available_resources',
                 headers: {
+                    "Authorization": authorizationHeader,
                     'Content-Type': 'application/json',
                     'Accept': 'application/ld+json'
                 },
                 data: data,
                 dataType: 'json',
                 success: function (data) {
-                    console.log(data);
-                },
-                //    $('#register-modal').modal('toggle');
-                //},
-                error: function (data) {
+                    const unJson = JSON.parse(data);
+                    console.log(unJson);
+                    $('.loader').hide();
 
-                    console.log(data);
+                    $('#countbike').html(unJson.countBike);
+                    $('#countelliptic').html(unJson.countEllipticBike);
+                    $('#countcarpet').html(unJson.countCarpet);
+
+                    $('.apiresponse').show();
+
+                },
+                error: function () {
+                    $('.loader').hide();
+                    $('#apialert').show();
+
                 }
             });
 
-            $('.modal-title').html(calEvent.title+' - '+calEvent.start.format('Do MMMM YYYY, h:mm:ss a'));
-            $('#calendarmodal').modal('toggle');
+
 
 
         }
