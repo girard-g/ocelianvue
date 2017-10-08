@@ -196,7 +196,7 @@ button.navbar-toggle {
 .nav {
 }
 .navbar-nav {
-    margin-left: 80px;
+    margin-left: 12%;
     margin-top: 16px;
     display: block;
 }
@@ -453,7 +453,7 @@ OFFER SECTION
 MESSAGE SECTION
  */
 .message-section {
-    padding: 75px 0;
+    padding: 50px 0;
     text-align: center;
     background: #fbf8fb;
     display: block;
