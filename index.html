@@ -175,33 +175,34 @@
         </div>
 
         <div class="purilfy-section">
-                    <h3 class="col-md-12">GALERIE</h3>
+                    <h1 class="col-md-12" style="color:white">GALERIE</h1>
                     <div class="row">
-                        <div class="offset-md-2 col-md-8">
-                            <div class="row">
-                                <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                                    <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
-                                </a>
-                                <a href="https://unsplash.it/1200/768.jpg?image=252" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                                    <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid">
-                                </a>
-                                <a href="https://unsplash.it/1200/768.jpg?image=253" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                                    <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="row">
-                                <a href="https://unsplash.it/1200/768.jpg?image=254" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                                    <img src="https://unsplash.it/600.jpg?image=254" class="img-fluid">
-                                </a>
-                                <a href="https://unsplash.it/1200/768.jpg?image=255" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                                    <img src="https://unsplash.it/600.jpg?image=255" class="img-fluid">
-                                </a>
-                                <a href="https://unsplash.it/1200/768.jpg?image=256" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                                    <img src="https://unsplash.it/600.jpg?image=256" class="img-fluid">
-                                </a>
+                        <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                        <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
+                                    </a>
+                                    <a href="https://unsplash.it/1200/768.jpg?image=252" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                        <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
+                                    </a>
+                                    <a href="https://unsplash.it/1200/768.jpg?image=253" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                        <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
+                                    </a>
+                                </div>
+                                <div class="row">
+                                    <a href="https://unsplash.it/1200/768.jpg?image=254" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                        <img src="https://unsplash.it/600.jpg?image=254" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
+                                    </a>
+                                    <a href="https://unsplash.it/1200/768.jpg?image=255" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                        <img src="https://unsplash.it/600.jpg?image=255" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
+                                    </a>
+                                    <a href="https://unsplash.it/1200/768.jpg?image=256" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                        <img src="https://unsplash.it/600.jpg?image=256" class="img-fluid" style="max-width:100%;height:auto;vertical-align:middle;padding-bottom:20px;">
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
         </div>
 
         <div class="offer-section">
@@ -455,12 +456,12 @@
             </div>
         </div>
 
-        <script src="js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="node_modules/fullcalendar/node_modules/jquery/dist/jquery.min.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/wow.min.js"></script>
         <script src="js/ekko-lightbox.js"></script>
         <script type="text/javascript">
-        $(document).on('click', '[data-toggle="lightbox" data-gallery="example-gallery"]', function(event) {
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
             event.preventDefault();
             $(this).ekkoLightbox();
         });
