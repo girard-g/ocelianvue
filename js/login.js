@@ -3,7 +3,12 @@
 var form = $('#form-login');
 var formError = $('#form-login-error');
 
+var emailLink = $('#email-link');
+var logoutLink = $('#logout-link-link');
+
 formError.hide();
+emailLink.hide();
+logoutLink.hide();
 form.on('submit', function (e) {
     e.preventDefault();
     formError.hide();
@@ -19,7 +24,12 @@ form.on('submit', function (e) {
             "Authorization": authorizationHeader
         },
         success: function (data) {
-            Document.cookie = 'api_token='+data.api_token+';';
+            document.cookie = 'username='+data.api_token+'; path=/';
+            $('#login-link').hide();
+            $('#register-link').hide();
+            emailLink.html(data.email);
+            emailLink.show();
+            logoutLink.show();
 
             $('#login-modal').modal('toggle');
         },
