@@ -5,11 +5,10 @@ var logoutLink = $('#logout-link');
 
 logoutLink.on('click', function (e) {
     e.preventDefault();
-    document.cookie = 'username=null; path=/';
-    document.cookie = 'email=null; path=/';
-    document.cookie = 'email=null';
-    document.cookie = 'username=null';
-    console.log(document.cookie);
+    setCookie('email', '');
+    setCookie('api_token', '');
+    setCookie('id', '');
+
     $('#login-link').show();
     $('#register-link').show();
     emailLink.html('');

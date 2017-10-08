@@ -246,19 +246,25 @@ jQuery(document).ready(function($) {
             $('.apiresponse').hide();
 
             $('.modal-title').html(calEvent.title+' - '+calEvent.start.format('Do MMMM YYYY, h:mm:ss a'));
+
+            const token = getCookie('api_token');
+            if ('' === token) {
+                $('.modal-title').html('Vous devez vous connecter avant de prendre rendez-vous.');
+                $('#login-modal').modal('toggle');
+
+                return;
+            }
             $('#calendarmodal').modal('toggle');
+
             $('.loader').show();
 
             const data = JSON.stringify({date:calEvent.start.format()});
-            const email = 'aze@aze.com';
-            const password = 'totototo';
 
-            const authorizationHeader = 'Basic '+btoa(email+':'+password);
             $.ajax({
                 method: 'POST',
                 url: 'http:/127.0.0.1:8000/available_resources',
                 headers: {
-                    "Authorization": authorizationHeader,
+                    "Ocelian-Token": token,
                     'Content-Type': 'application/json',
                     'Accept': 'application/ld+json'
                 },
