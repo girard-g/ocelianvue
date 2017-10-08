@@ -246,8 +246,30 @@ jQuery(document).ready(function($) {
             console.log(calEvent.start.format());
             console.log(calEvent.title);
 
-            // change the border color just for fun
-            $(this).css('border-color', 'red');
+            var data = JSON.stringify({date:calEvent.start.format()});
+            $.ajax({
+                method: 'GET',
+                url: 'http:/127.0.0.1:8000/available_resources',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/ld+json'
+                },
+                data: data,
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                },
+                //    $('#register-modal').modal('toggle');
+                //},
+                error: function (data) {
+
+                    console.log(data);
+                }
+            });
+
+            $('.modal-title').html(calEvent.title+' - '+calEvent.start.format('Do MMMM YYYY, h:mm:ss a'));
+            $('#calendarmodal').modal('toggle');
+
 
         }
     })

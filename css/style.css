@@ -311,8 +311,11 @@ Purilfy section
 }
 
 #calendar {
-    cursor: pointer;
     margin-top:100px;
+}
+
+.fc-time-grid-event{
+    cursor: pointer;
 }
 
 .pad15 {
