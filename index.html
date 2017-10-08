@@ -34,18 +34,17 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">
-                    <img src="image/logo-ocelian.png" width="243" height="54" alt="" class="img-responsive">
+                    <img src="image/logo-ocelian.png" width="243" height="54" alt="" class="img-responsive" style="width:125px">
                 </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Présentation</a></li>
-                    <li><a href="#">Galerie</a></li>
-                    <li><a href="#">Tarifs & Horraires</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#myCarousel">Home</a></li>
+                    <li><a href="#gallery">Galerie</a></li>
+                    <li><a href="#tarif">Tarifs & Horraires</a></li>
+                    <li><a href="#contact">Contact</a></li>
                     <li><a href="reserve.html">Reserver</a></li>
                     <li><a href="#" id="login-link" data-toggle="modal" data-target="#login-modal">Connexion</a></li>
                     <li><a href="#" id="register-link" data-toggle="modal" data-target="#register-modal">Inscription</a></li>
@@ -160,7 +159,7 @@
                 </div>
                 <div class="item">
                     <img src="image/table-bg.png" alt="Chicago" style="width:100%">
-                    <div class="carousel-caption d-none d-md-block" style="bottom:30%">
+                    <div class="carousel-caption d-none d-md-block" style="bottom:27%">
                         <h1 style="color:white;">L'ambition de notre équipe est de vous offrir le meilleur service : sport, bien-être, quiétude, dans une ambiance chaleureuse, choisissez la formule qui vous convient.</h1>
                     </div>
                 </div>
@@ -177,9 +176,9 @@
             </a>
         </div>
 
-        <div class="purilfy-section">
+        <div id="gallery" class="purilfy-section">
             <div class="wow fadeInDown animated">
-                <h1 style="color:white">GALERIE</h1>
+                <h2 class="section-title" style="color:white;font-size: 20px;font-family: 'ProximaNovaA-Bold';font-weight: 600;text-align: center;">GALERIE</h2>
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
@@ -469,6 +468,13 @@
         $(document).on('click', '[data-toggle="lightbox"]', function(event) {
             event.preventDefault();
             $(this).ekkoLightbox();
+        });
+        $(".nav li a").click(function() {
+            var href = $(this).attr('href');
+            var div = $(href);
+            $('html, body').animate({
+                scrollTop: div.offset().top
+            }, 1000);
         });
         </script>
         <script src="js/custom.js"></script>
