@@ -243,9 +243,6 @@ jQuery(document).ready(function($) {
 
         eventClick: function(calEvent, jsEvent, view) {
 
-            console.log(calEvent.start.format());
-            console.log(calEvent.title);
-
             $('.apiresponse').hide();
 
             $('.modal-title').html(calEvent.title+' - '+calEvent.start.format('Do MMMM YYYY, h:mm:ss a'));
@@ -269,14 +266,61 @@ jQuery(document).ready(function($) {
                 dataType: 'json',
                 success: function (data) {
                     const unJson = JSON.parse(data);
-                    console.log(unJson);
                     $('.loader').hide();
 
                     $('#countbike').html(unJson.countBike);
                     $('#countelliptic').html(unJson.countEllipticBike);
                     $('#countcarpet').html(unJson.countCarpet);
 
+                    const select = document.getElementById('velofield');
+                    var j =1;
+
+                    for (var i=0;i<unJson.resources.bike.length;i++){
+                        var opt = document.createElement('option');
+                        opt.value = j;
+                        opt.innerHTML = j;
+                        select.appendChild(opt);
+                        j ++;
+                    }
                     $('.apiresponse').show();
+
+                    $('#validate').on('click', function(e){
+
+                        var nbBike = $('#velofield').find(":selected").text();
+                        var ArrayToSend = [];
+                        var iris = [];
+
+                        for (var i=0;i<nbBike;i++) {
+
+                            ArrayToSend.push(unJson.resources.bike[i]);
+                            var string ='/resources/'+unJson.resources.bike[i].id;
+                            iris.push(string);
+                        }
+                        console.log(ArrayToSend);
+
+                        const data = {
+                            date: calEvent.start.format(),
+                            resources: iris
+                        };
+
+                        console.log(data);
+
+                            $.ajax({
+                                method: 'POST',
+                                url: 'http:/127.0.0.1:8000/appointments',
+                                headers: {
+                                    "Authorization": authorizationHeader,
+                                    'Content-Type': 'application/json',
+                                    'Accept': 'application/ld+json'
+                                },
+                                data: JSON.stringify(data),
+                                dataType: 'json',
+                                success: function (data) {
+                                    console.log(data);
+                                }
+                            });
+
+                    });
 
                 },
                 error: function () {
@@ -285,10 +329,6 @@ jQuery(document).ready(function($) {
 
                 }
             });
-
-
-
-
         }
     })
 });
