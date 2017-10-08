@@ -302,15 +302,10 @@ jQuery(document).ready(function($) {
                             var string ='/resources/'+unJson.resources.bike[i].id;
                             iris.push(string);
                         }
-                        console.log(ArrayToSend);
-
                         const data = {
                             date: calEvent.start.format(),
                             resources: iris
                         };
-
-                        console.log(data);
-
                             $.ajax({
                                 method: 'POST',
                                 url: 'http:/127.0.0.1:8000/appointments',
